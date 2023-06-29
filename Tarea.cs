@@ -1,3 +1,4 @@
+ using System.Collections.Generic;
 namespace ClasesParaTarea{
    public class Tarea{
 
@@ -17,5 +18,34 @@ namespace ClasesParaTarea{
    }
 
 
+}
+   public class funciones {
+   public Tarea? BuscarTareaPorID(int id, List<Tarea> listaTareas)
+   {
+    foreach (Tarea tarea in listaTareas)
+    {
+        if (id == tarea.TareaID)
+        {
+            return tarea;
+        }
+    }
+    return null;
    }
+
+   public Tarea? BuscarTareaPorClave(string? clave, List<Tarea> listaTareas)
+   {
+      foreach(Tarea tarea in listaTareas)
+      {
+         if(clave == tarea.Descripcion)
+         {
+            return tarea;
+         }
+      }
+      return null;
+   }
+
+
+
+
+}
 }
