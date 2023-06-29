@@ -1,16 +1,23 @@
 ﻿using System;
-using ClasesParaTarea; 
+using System.IO;
 using System.Collections.Generic;
+using ClasesParaTarea; 
+
+
 
 // See https://aka.ms/new-console-template for more information
 Console.WriteLine("Hello, World!");
 
 List<Tarea> TareasPendientes= new List<Tarea>();
 List<Tarea> TareasRealizadas =new List<Tarea>();
-string? salida= "" , desc="" , input , clave;
+string? desc="" , input , clave;
 int num =0 , id ;
 bool parseoBool;
 int salir =0;
+int horas=0;
+
+//string RutaArchivo = @"c:c:\taller\repo\tp8\tl1_tp8_2023-andrea7demarco\text1.txt";
+
     // creo una instancia 
     funciones func = new funciones();
 
@@ -138,10 +145,19 @@ int salir =0;
    }while(salir!=8);
 
 
+    foreach( Tarea tarea in TareasPendientes)
+    {
+    horas += tarea.Duracion;
+    }
 
+    foreach( Tarea tarea in TareasRealizadas)
+    {
+    horas += tarea.Duracion;
+    }
 
-
-
+    StreamWriter sw = new StreamWriter("Horas_trabajadas.txt");
+    sw.WriteLine($"Horas trabajadas = {horas}");
+    sw.Close();
 
 /*
 foreach (var numero in MiLista ){
